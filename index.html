@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Heroes & Deities TCG</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <section id="home" class="screen on">
+    <div class="hero">
+      <div class="mark" aria-hidden="true">⚔</div>
+      <h1>HEROES &amp; DEITIES</h1>
+      <h2>TRADING CARD GAME</h2>
+      <div class="menu">
+        <button class="btn primary" onclick="HDStart('ST-01')">Play ST-01 Host of Ares</button>
+        <button class="btn primary" onclick="HDStart('ST-02')">Play ST-02 Thunderforge</button>
+        <button class="btn" onclick="HDShow('collection')">Collection</button>
+        <button class="btn" onclick="HDShow('store')">Pack Store</button>
+        <button class="btn" onclick="HDShow('howto')">How to Play</button>
+      </div>
+      <p class="sub">Free starters · 6 HP die · First player starts with 2 Divine · Ages 13+</p>
+    </div>
+  </section>
+
+  <section id="collection" class="screen">
+    <div class="top">
+      <button class="btn ghost" onclick="HDHome()">←</button>
+      <h3>COLLECTION</h3>
+      <input id="q" placeholder="Search" style="background:#2a160f;color:#f4e6d0;border:1px solid #e0b85a;padding:6px 8px;border-radius:6px" />
+    </div>
+    <div class="wrap"><div id="collection-grid" class="grid"></div></div>
+  </section>
+
+  <section id="store" class="screen">
+    <div class="top">
+      <button class="btn ghost" onclick="HDHome()">←</button>
+      <h3>PACK STORE</h3>
+    </div>
+    <div class="wrap">
+      <p>Credits: <b id="credits">200</b> · Record: <span id="record">0W / 0L</span></p>
+      <p>Both starter decks are already in your collection. Packs cost <b>100</b> credits. Win a battle for <b>+150</b>.</p>
+      <p>Rates: Common 30% · Uncommon 24% · Rare 22% · Super Rare 12% · Legendary 8.5% · Mythic 3.5%. Mythic / ALT / Parallel may foil or holo.</p>
+      <button class="btn primary" onclick="HDOpenPack()">Open Ember Pack — 100</button>
+      <div id="pack-result"></div>
+    </div>
+  </section>
+
+  <section id="howto" class="screen">
+    <div class="top">
+      <button class="btn ghost" onclick="HDHome()">←</button>
+      <h3>HOW TO PLAY</h3>
+    </div>
+    <div class="wrap">
+      <p>Tips for new players: <b id="tips-state">ON</b>
+        <button class="btn" onclick="toggleTips()">Toggle tips</button>
+      </p>
+      <div class="tip"><b>Goal.</b> Reduce the opposing Health Die from 6 to 0. There are no life cards to trash — only the die.</div>
+      <div class="tip"><b>Paragon.</b> Each starter has one god Paragon at 5,000 Power. Only Paragons Awaken, and only at 2 HP or less. Awakened art is a unique inset, never a copy of the main portrait.</div>
+      <div class="tip"><b>Divine.</b> A separate 10-card resource. The first player starts with 2 Divine. Spend Divine to play Characters, Events, Relics, Domains, and Mythics.</div>
+      <div class="tip"><b>Combat.</b> Attack with a ready Character or your Paragon. If the opponent has GUARD, you must strike a Guard. Higher Power wins. Counters add Power when defending.</div>
+      <div class="tip"><b>Keywords.</b> RUSH attacks the turn it enters. CHARGE gains Power when it attacks. GUARD intercepts. FATE triggers when you lose HP.</div>
+      <div class="tip"><b>Starters.</b> ST-01 Host of Ares and ST-02 Thunderforge use different cards. Print them from the companion print-kit repo at 63×88 mm.</div>
+    </div>
+  </section>
+
+  <section id="battle" class="screen">
+    <div class="top">
+      <button class="btn ghost" onclick="HDHome()">←</button>
+      <h3>BATTLE</h3>
+      <button class="btn primary" onclick="HDEndTurn()">End Turn</button>
+    </div>
+    <div class="wrap"><div id="battle-ui"></div></div>
+    <div class="dock"><div class="hand" id="hand"></div></div>
+  </section>
+
+  <script src="cards.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
